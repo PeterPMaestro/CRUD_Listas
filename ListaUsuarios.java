@@ -26,8 +26,8 @@ public class ListaUsuarios {
 		misSocios.add(u);
 	}
 	public Usuario PedirUsuario() {
-		String dni = Utilidades.PedirCadena("Escriba el dni del nuevo usuario");
-		String nombre = Utilidades.PedirCadena("Escriba el nombre del nuevo usuario");
+		String dni = Utilidades.PedirCadena("Escriba el dni del nuevo usuario: ");
+		String nombre = Utilidades.PedirCadena("Escriba el nombre del nuevo usuario: ");
 		Usuario u1 = new Usuario(dni,nombre);
 		return u1;		
 	}
@@ -64,14 +64,13 @@ public class ListaUsuarios {
 	
 	//-------------------OBTENER USUARIO
 	public String ObtenerUsuario(String cadena) {
-		String usuario = "";
 		int posicion = BusquedaUsuario(cadena);
 		if (posicion != -1) {
-			usuario = misSocios.get(posicion).toString();
+			System.out.println("El socio está en la base de datos");
 		} else {
 			System.out.println("El socio no está en la base de datos");
 		}
-		return usuario;
+		return cadena;
 	}
 
 	// ----------------------- AÑADIR PELI A USUARIO DE LA CARTELERA
@@ -90,8 +89,8 @@ public class ListaUsuarios {
 	// --------------------UPDATE DATOS USUARIO
 	public void UpdateUsuario(int posicion) {
 		if (posicion != -1) {
-			String NEWdni = Utilidades.PedirCadena(Utilidades.mensaje3);
-			String NEWnombreUser = Utilidades.PedirCadena(Utilidades.mensaje2);
+			String NEWdni = Utilidades.PedirCadena(Utilidades.mensaje7);
+			String NEWnombreUser = Utilidades.PedirCadena(Utilidades.mensaje8);
 			misSocios.get(posicion).setDni(NEWdni);
 			misSocios.get(posicion).setNombreUsuario(NEWnombreUser);
 			System.out.println(misSocios.get(posicion));

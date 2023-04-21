@@ -16,6 +16,8 @@ public class Utilidades {
 	static String mensaje4 = "introduzca el id de la película: ";
 	static String mensaje5 = "introduzca el género de la película: ";
 	static String mensaje6 = "introduzca la fecha de estreno de la película de la manera que se indica (2001-01-02): ";
+	static String mensaje7 = "introduzca el nuevo dni del usuario: ";
+	static String mensaje8 = "introduzca el nuevo nombre del usuario: ";
 	static String menu1 = "\n 1. Usuarios" + "\n 2. Cartelera" + "\n 3. Salir" + "\n Elija una opción ";
 	static String menu2 = "\n 1. Añadir Usuario" + "\n 2. Buscar Usuario"  + "\n 3. Mostrar Usuarios" 
 			+  "\n 4. Update Usuario"  + "\n 5. Insertar película en la cuenta del Usuario"
@@ -56,7 +58,7 @@ public class Utilidades {
 		LocalDate fechaPeli = p.getFechaEstreno();
 		LocalDate hoy = LocalDate.now();
 		long resultado = ChronoUnit.YEARS.between(fechaPeli, hoy);
-		
-		
+		JOptionPane.showMessageDialog(null, "Hoy hace " + resultado + " años del estreno de" + p.getNombre());
 	}
+	//int numero = (int)(Math.random()*10+1); // 10 es límite superior y 1 el inferior
 }

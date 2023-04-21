@@ -20,8 +20,9 @@ public class Controlador {
 		lista1.AddUsuario(new Usuario("763547653P","Pepe"));
 		listaP.AddPeliculaCartelera(new Pelicula(1,"Oblivion","Sci-fi", LocalDate.parse("2013-04-15")));
 		listaP.AddPeliculaCartelera(new Pelicula(2,"Star Wars","Sci-fi",LocalDate.parse("1977-10-12")));
+		listaP.AddPeliculaCartelera(new Pelicula(3,"Tron","Sci-fi",LocalDate.parse("1984-10-12")));
 	
-		
+		Utilidades.DiferenciaFechas(listaP.ObtenerPeliculaRandom());
 		while(boton) {
 			eleccion = Utilidades.PedirCadena(Utilidades.menu1);
 
@@ -40,6 +41,7 @@ public class Controlador {
 					switch (eleccion2) {
 					case ("1"):
 						lista1.AddUsuario(lista1.PedirUsuario());
+						System.out.println("Usuario añadido");
 						break;
 					case ("2"):
 						lista1.MostrarBusquedaUsuario(lista1.BusquedaUsuario(Utilidades.PedirCadena(Utilidades.mensaje2)));
@@ -48,19 +50,19 @@ public class Controlador {
 						System.out.println(lista1.toString());
 						break;
 					case ("4"):
-						lista1.UpdateUsuario(lista1.BusquedaUsuario(Utilidades.mensaje2));
+						lista1.UpdateUsuario(lista1.BusquedaUsuario(Utilidades.PedirCadena(Utilidades.mensaje2)));
 						break;
 					case ("5"):
-						lista1.AddPeliUsuario(lista1.ObtenerUsuario(Utilidades.mensaje2), listaP.ObtenerPelicula());
+						lista1.AddPeliUsuario(lista1.ObtenerUsuario(Utilidades.PedirCadena(Utilidades.mensaje2)), listaP.ObtenerPelicula());
 						break;
 					case ("6"):
-						lista1.DeleteUsuario(Utilidades.PedirCadena(Utilidades.mensaje2));
+						lista1.DeleteUsuario(Utilidades.PedirCadena(Utilidades.PedirCadena(Utilidades.mensaje2)));
 						break;
 					case ("7"):
-						lista1.BusquedaPeliUser(Utilidades.mensaje1, Utilidades.mensaje2);
+						lista1.BusquedaPeliUser(Utilidades.PedirCadena(Utilidades.mensaje1), Utilidades.PedirCadena(Utilidades.mensaje2));
 						break;
 					case ("8"):
-						lista1.BorrarPeliUser(Utilidades.mensaje1, Utilidades.mensaje2);
+						lista1.BorrarPeliUser(Utilidades.PedirCadena(Utilidades.mensaje1), Utilidades.PedirCadena(Utilidades.mensaje2));
 						break;
 					case ("9"):
 						boton2 = false;
