@@ -48,11 +48,25 @@ public class ListaPeliculas {
 	public Pelicula ObtenerPelicula() {
 		String cadena = Utilidades.PedirCadena(Utilidades.mensaje1);
 		int posicion = SearchPeliculaCartelera(cadena);
+		if(posicion == -1) {
+			ObtenerPelicula();
+		}
 		Pelicula p = new Pelicula(cartelera.get(posicion).getIdPelicula(), cartelera.get(posicion).getNombre(),
 				cartelera.get(posicion).getGenero(), cartelera.get(posicion).getFechaEstreno());
+		
 		return p;
-
+		
 	}
+	
+	//-------------------------OBTENER UNA PELICULA RANDOM
+		public Pelicula ObtenerPeliculaRandom() {
+			
+			int posicion = (int)(Math.random()*cartelera.size()+0);
+			Pelicula p = new Pelicula(cartelera.get(posicion).getIdPelicula(), cartelera.get(posicion).getNombre(),
+					cartelera.get(posicion).getGenero(), cartelera.get(posicion).getFechaEstreno());
+			return p;
+
+		}
 
 	//--------------------------BUSCAR POR CADENA
 	
