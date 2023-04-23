@@ -57,9 +57,7 @@ public class Controlador {
 						lista1.AddPeliUsuario(lista1.ObtenerUsuario(Utilidades.PedirCadena(Utilidades.mensaje2)), listaP.ObtenerPelicula());
 						break;
 					case ("6"):
-						//ARREGLAR
 						lista1.DeleteUsuario(lista1.BusquedaUsuario(Utilidades.PedirCadena(Utilidades.mensaje2)));
-						lista1.MostrarBusquedaUsuario(posicion);
 						break;
 					case ("7"):
 						lista1.BusquedaPeliUser(Utilidades.PedirCadena(Utilidades.mensaje1), Utilidades.PedirCadena(Utilidades.mensaje2));
