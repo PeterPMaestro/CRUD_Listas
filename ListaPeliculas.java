@@ -61,18 +61,20 @@ public class ListaPeliculas {
 	 * Busca una película en el ArrayList ListaPeliculas, si lo obtiene lo retorna, si no retorna la lista.
 	 */
 	public Pelicula ObtenerPelicula() {
+		
 		String cadena = Utilidades.PedirCadena(Utilidades.mensaje1);
 		int posicion = SearchPeliculaCartelera(cadena);
-		if(posicion == -1) {
-			
+		
+		while(posicion == -1) {
 			System.out.println("La pelicula no está en la lista. A continuación le mostramos la cartelera para que pueda elegir:");
 			System.out.println(cartelera.toString());
-			ObtenerPelicula();
+			 cadena = Utilidades.PedirCadena(Utilidades.mensaje1);
+			posicion = SearchPeliculaCartelera(cadena);
 		}
+
 		Pelicula p = new Pelicula(cartelera.get(posicion).getIdPelicula(), cartelera.get(posicion).getNombre(),
 				cartelera.get(posicion).getGenero(), cartelera.get(posicion).getFechaEstreno());
-		
-		
+
 		return p;
 		
 	}
@@ -93,7 +95,7 @@ public class ListaPeliculas {
 	//--------------------------BUSCAR POR CADENA
 	/**
 	 * 
-	 * @param cadena
+	 * @param cadena  en el ArrayList cartelera.
 	 * @return la posición de la cadena en el ArrayList cartelera.
 	 */
 	
@@ -120,7 +122,7 @@ public class ListaPeliculas {
 	//------------------ MOSTRAR BÚSQUEDA CADENA (título y género)
 	/**
 	 * 
-	 * @param posicion
+	 * @param posicion  en el ArrayList cartelera.
 	 * Imprime la posición o un mensaje de película no encontrada.
 	 */
 	public void MostrarBusquedaPeli(int posicion) {
@@ -149,8 +151,8 @@ public class ListaPeliculas {
 	//------------------------------- UPDATE PELI
 	/**
 	 * 
-	 * @param posicion
-	 * @return posicion
+	 * @param posicion  en el ArrayList cartelera.
+	 * @return posicion  en el ArrayList cartelera.
 	 * recibe la posicion, ejecuta la actualización si la posción es diferente de - 1 en el ArrayList cartelera, y retorna la posicion modificada.
 	 */
 	public int UpdatePeliculaCartelera(int posicion) {
@@ -182,7 +184,7 @@ public class ListaPeliculas {
 	//----------------------DELETE película
 	/**
 	 * 
-	 * @param posicion
+	 * @param posicion  en el ArrayList cartelera.
 	 * Recibe un parámetro posicion y si es diferente a - 1, ejecuta el borrado.
 	 */
 	public void DeletePeliculaCartelera(int posicion) {

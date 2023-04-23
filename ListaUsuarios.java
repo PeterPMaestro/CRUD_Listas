@@ -45,7 +45,7 @@ public class ListaUsuarios {
 //------------------------------ METODO DE BÚSQUEDA USUARIO
 	/**
 	 * 
-	 * @param cadena
+	 * @param cadena del ArrayList MisSocios
 	 * @return un int, una posición o bien del ArrayList MisSocios o bien -1 si no lo ha encontrado.
 	 */
 	public int BusquedaUsuario(String cadena) {
@@ -69,7 +69,7 @@ public class ListaUsuarios {
 	// ------------------ MOSTRAR BUSQUEDA DE USUARIO
 	/**
 	 * 
-	 * @param posicion
+	 * @param posicion del ArrayList MisSocios.
 	 * Recibe un parámetro de posición del usuario e imprime por pantalla, si está, esa posición del arrayList MisSocios.
 	 */
 	
@@ -85,7 +85,7 @@ public class ListaUsuarios {
 	//-------------------OBTENER USUARIO
 	/**
 	 * 
-	 * @param cadena
+	 * @param cadena del ArrayList MisSocios.
 	 * @return retorna la cadena y un mensaje tanto si el usuario se encuentra como si no.
 	 */
 	public String ObtenerUsuario(String cadena) {
@@ -101,8 +101,8 @@ public class ListaUsuarios {
 	// ----------------------- AÑADIR PELI A USUARIO DE LA CARTELERA
 	/**
 	 * 
-	 * @param cadena
-	 * @param p
+	 * @param cadena del ArrayList MisSocios.
+	 * @param p un Objeto película.
 	 * Este método recibe una cadena, que va a buscar en usuarios, y una pelicula que añadirá a ese usuario.
 	 */
 	public void AddPeliUsuario(String cadena, Pelicula p) {
@@ -117,9 +117,9 @@ public class ListaUsuarios {
 
 	// --------------------UPDATE DATOS USUARIO  
 	/**
-	 * 
-	 * @param posicion
-	 * @return la posicion
+	 *  
+	 * @param posicion del ArrayList MisSocios
+	 * @return la posicion del ArrayList MisSocios
 	 * Recibe un parámetro que indica la posicion que debe modificar. Si el parámetro es - 1 no se ejecuta la modificación.
 	 * Devuelve la posicion que se ha modificado en forma de int.
 	 */
@@ -138,7 +138,7 @@ public class ListaUsuarios {
 	// -------------------------DELETE USUARIO 
 	/**
 	 * 
-	 * @param posicion
+	 * @param posicion del ArrayList MisSocios
 	 * Recibe un int como parámetro que indica la posición que se debe borrar, si es - 1 no ejecuta el borrado. Imprime un mensaje con el resultado.
 	 */
 	public void DeleteUsuario(int posicion) {
@@ -155,8 +155,8 @@ public class ListaUsuarios {
 	// ------------------------ BUSCAR PELICULA EN USUARIO
 	/**
 	 * 
-	 * @param cadena
-	 * @param nombreUsuario
+	 * @param cadena del ArrayList cartelera.
+	 * @param nombreUsuario del ArrayList MisSocios
 	 * Recibe dos parámetros, una cadena que utilizará para buscar en el ArrayList de ListaPeliculas y otra cadena que utilizará para buscar
 	 * en el ArrayList ListaUsuarios.
 	 * Muestra los resultados de esa búsqueda por pantalla.
@@ -180,8 +180,8 @@ public class ListaUsuarios {
 	// -----------------------------DELETE PELI EN USUARIO
 	/**
 	 * 
-	 * @param cadena
-	 * @param nombreUsuario
+	 * @param cadena del ArrayList cartelera
+	 * @param nombreUsuario del ArrayList MisSocios
 	 * Recibe dos parámetros, una cadena que utilizará para buscar en el ArrayList de ListaPeliculas y otra cadena que utilizará para buscar
 	 * en el ArrayList ListaUsuarios.
 	 * Ejecuta o no el borrado y muestra los resultados de esa búsqueda por pantalla.
@@ -194,7 +194,7 @@ public class ListaUsuarios {
 			posicion = misSocios.get(posicionU).BuscarPeli(cadena);
 			if (posicion != -1) {
 				System.out.println("La película se borrará de la lista de películas de " + nombreUsuario);
-				misSocios.get(posicion).BorrarPeli(posicion);
+				misSocios.get(posicionU).BorrarPeli(posicion);
 			} else {
 				System.out.println("La película no está en la lista de películas de " + nombreUsuario);
 			}
