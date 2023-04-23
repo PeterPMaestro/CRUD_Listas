@@ -63,7 +63,7 @@ public class Usuario {
 		}
 		return posicionPeli;
 	}
-
+//--------------------------MOSTRAR
 	public void MostrarBuscarPeli(int posicion) {
 		if (posicion != -1) {
 			System.out.println(misPelis.get(posicion));

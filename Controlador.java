@@ -5,6 +5,7 @@ public class Controlador {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		int posicion = -1;
 		String eleccion = "";
 		String eleccion2 = "";
 		String eleccion3 = "";
@@ -50,13 +51,15 @@ public class Controlador {
 						System.out.println(lista1.toString());
 						break;
 					case ("4"):
-						lista1.UpdateUsuario(lista1.BusquedaUsuario(Utilidades.PedirCadena(Utilidades.mensaje2)));
+						 posicion = lista1.UpdateUsuario(lista1.BusquedaUsuario(Utilidades.PedirCadena(Utilidades.mensaje2)));
 						break;
 					case ("5"):
 						lista1.AddPeliUsuario(lista1.ObtenerUsuario(Utilidades.PedirCadena(Utilidades.mensaje2)), listaP.ObtenerPelicula());
 						break;
 					case ("6"):
-						lista1.DeleteUsuario(Utilidades.PedirCadena(Utilidades.PedirCadena(Utilidades.mensaje2)));
+						//ARREGLAR
+						lista1.DeleteUsuario(lista1.BusquedaUsuario(Utilidades.PedirCadena(Utilidades.mensaje2)));
+						lista1.MostrarBusquedaUsuario(posicion);
 						break;
 					case ("7"):
 						lista1.BusquedaPeliUser(Utilidades.PedirCadena(Utilidades.mensaje1), Utilidades.PedirCadena(Utilidades.mensaje2));
@@ -91,13 +94,15 @@ public class Controlador {
 						System.out.println(listaP.toString());
 						break;
 					case ("3"):
-						listaP.MostrarBusquedaPeli(Utilidades.mensaje1);
+						listaP.MostrarBusquedaPeli((listaP.SearchPeliculaCartelera(Utilidades.PedirCadena(Utilidades.mensaje1))));;
 						break;
 					case ("4"):
-						listaP.UpdatePeliculaCartelera();
+						posicion = listaP.SearchPeliculaCartelera(Utilidades.PedirCadena(Utilidades.mensaje1));
+						posicion = listaP.UpdatePeliculaCartelera(posicion);
+						listaP.MostrarBusquedaPeli(posicion);
 						break;
 					case ("5"):
-						listaP.DeletePeliculaCartelera(Utilidades.mensaje1);
+						listaP.DeletePeliculaCartelera(listaP.SearchPeliculaCartelera(Utilidades.PedirCadena(Utilidades.mensaje1)));
 						break;
 					case ("6"):
 						boton3 = false;
