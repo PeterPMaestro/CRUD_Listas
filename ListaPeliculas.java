@@ -22,6 +22,11 @@ public class ListaPeliculas {
 		return "ListaPeliculas [cartelera=" + cartelera + "]";
 	}
 //---------------------- CREAR/AÑADIR PELÍCULA A LA LISTA
+	/**
+	 * 
+	 * @return un objeto de tipo Pelicula
+	 * Pide datos para generar una película. Utiliza la clase utilidades para crear la fecha. 
+	 */
 	public Pelicula CrearPelicula() {
 		String titulo = Utilidades.PedirCadena(Utilidades.mensaje1);
 		String genero = Utilidades.PedirCadena(Utilidades.mensaje5);
@@ -39,36 +44,58 @@ public class ListaPeliculas {
 		return p;
 	}
 	//--------------------AÑADIR PELICULA A LA LISTA -----------------
+	/**
+	 * 
+	 * @param p
+	 * Requiere un parámetro que sea un objeto de la clase Pelicula. Lo añade a la cartelera.
+	 */
 	
 	public void AddPeliculaCartelera(Pelicula p) {
 		cartelera.add(p);
 		
 	}
 //-------------------------OBTENER UNA PELICULA
+	/**
+	 * 
+	 * @return un objeto de la clase Pelicula
+	 * Busca una película en el ArrayList ListaPeliculas, si lo obtiene lo retorna, si no retorna la lista.
+	 */
 	public Pelicula ObtenerPelicula() {
 		String cadena = Utilidades.PedirCadena(Utilidades.mensaje1);
 		int posicion = SearchPeliculaCartelera(cadena);
 		if(posicion == -1) {
+			
+			System.out.println("La pelicula no está en la lista. A continuación le mostramos la cartelera para que pueda elegir:");
+			System.out.println(cartelera.toString());
 			ObtenerPelicula();
 		}
 		Pelicula p = new Pelicula(cartelera.get(posicion).getIdPelicula(), cartelera.get(posicion).getNombre(),
 				cartelera.get(posicion).getGenero(), cartelera.get(posicion).getFechaEstreno());
+		
 		
 		return p;
 		
 	}
 	
 	//-------------------------OBTENER UNA PELICULA RANDOM
-		public Pelicula ObtenerPeliculaRandom() {
-			
-			int posicion = (int)(Math.random()*cartelera.size()+0);
-			Pelicula p = new Pelicula(cartelera.get(posicion).getIdPelicula(), cartelera.get(posicion).getNombre(),
-					cartelera.get(posicion).getGenero(), cartelera.get(posicion).getFechaEstreno());
-			return p;
-
-		}
+	/**
+	 * 
+	 * @return un objeto de la clase película.
+	 * Lo hace utilizando una función random.
+	 */
+	public Pelicula ObtenerPeliculaRandom() {
+		int posicion = (int) (Math.random() * cartelera.size() + 0);
+		Pelicula p = new Pelicula(cartelera.get(posicion).getIdPelicula(), cartelera.get(posicion).getNombre(),
+				cartelera.get(posicion).getGenero(), cartelera.get(posicion).getFechaEstreno());
+		return p;
+	}
 
 	//--------------------------BUSCAR POR CADENA
+	/**
+	 * 
+	 * @param cadena
+	 * @return la posición de la cadena en el ArrayList cartelera.
+	 */
 	
 	public int SearchPeliculaCartelera(String cadena) {
 		int i = 0;
@@ -91,10 +118,15 @@ public class ListaPeliculas {
 		return posicion;
 	}
 	//------------------ MOSTRAR BÚSQUEDA CADENA (título y género)
-	
-	public void MostrarBusquedaPeli(String cadena) {
-		cadena = Utilidades.PedirCadena(Utilidades.mensaje1);
-		int posicion = SearchPeliculaCartelera(cadena);
+	/**
+	 * 
+	 * @param posicion
+	 * Imprime la posición o un mensaje de película no encontrada.
+	 */
+	public void MostrarBusquedaPeli(int posicion) {
+		
+		//cadena = Utilidades.PedirCadena(Utilidades.mensaje1);
+		//int posicion = SearchPeliculaCartelera(cadena);
 		if (posicion != -1) {
 			System.out.println(cartelera.get(posicion));
 		} else {
@@ -102,61 +134,33 @@ public class ListaPeliculas {
 		}
 	}
 
-	//------------------------- BUSCAR POR IDPELICULA
-	
-	public void SearchPeliculaCartelera(int num) {
-		int i = 0;
-		boolean interruptor = true;
-		while (interruptor && i < cartelera.size()) {
-			if (cartelera.get(i).getIdPelicula() == num) {
-				System.out.println("Película en la lista");
-				interruptor = false;
-			} else {
-				i++;
-			}
-		}
-		if (i == cartelera.size()) {
-			System.out.println("Película no encontrada");
-		}
-	}
-
 	//-----------------------BUSCAR LA ÚLTIMA PELICULA AÑADIDA
+	/**
+	 * 
+	 * @return la posición del id de la última película en el ArrayList cartelera.
+	 */
 	public int BuscarUltimoIDCartelera() {
 		int i = cartelera.size()-1;
 		int posicion = -1;
 		posicion = cartelera.get(i).getIdPelicula();
 		return posicion;
-		
 	}
-	
-	//--------------------BUSCAR POR FECHA
-	
-	public void SearchPeliculaCartelera(LocalDate fecha) {
-		int i = 0;
-		boolean interruptor = true;
-		while (interruptor && i < cartelera.size()) {
-			
-			if (cartelera.get(i).getFechaEstreno().equals(fecha)) {
-				System.out.println("Película en la lista");
-				interruptor = false;
-			} else {
-				i++;
-			}
-		}
-		if (i == cartelera.size()) {
-			System.out.println("Película no encontrada");
-		}
-	}
-	//----------------------------------------
-	public void UpdatePeliculaCartelera() {
-		int posicion = SearchPeliculaCartelera(Utilidades.PedirCadena(Utilidades.mensaje1));
+
+	//------------------------------- UPDATE PELI
+	/**
+	 * 
+	 * @param posicion
+	 * @return posicion
+	 * recibe la posicion, ejecuta la actualización si la posción es diferente de - 1 en el ArrayList cartelera, y retorna la posicion modificada.
+	 */
+	public int UpdatePeliculaCartelera(int posicion) {
 		if (posicion != -1) {
 			boolean condicion = true;
 			while (condicion) {
 				try {
 					
-					String NEWnombrePelicula = Utilidades.PedirCadena(Utilidades.mensaje1);
-					String NEWgenero = Utilidades.PedirCadena(Utilidades.mensaje5);
+					String NEWnombrePelicula = Utilidades.PedirCadena(Utilidades.mensaje9);
+					String NEWgenero = Utilidades.PedirCadena(Utilidades.mensaje10);
 					LocalDate NEWfechaEstreno = Utilidades.Crearfechas();
 					cartelera.get(posicion).setNombre(NEWnombrePelicula);
 					cartelera.get(posicion).setGenero(NEWgenero);
@@ -165,16 +169,24 @@ public class ListaPeliculas {
 					condicion = false;
 				} catch (java.util.InputMismatchException e) {
 					System.out.println("Error al introducir datos. pruebe de nuevo");
-				}
+				}catch (Exception e) {
+				      System.out.println("Error al introducir datos. pruebe de nuevo");
+			    }
 			}
 		} else {
 			System.out.println("Película no encontrada");
 		}
+		return posicion;
 	}
 
 	//----------------------DELETE película
-	public void DeletePeliculaCartelera(String cadena) {
-		int posicion = SearchPeliculaCartelera(Utilidades.PedirCadena(Utilidades.mensaje1));
+	/**
+	 * 
+	 * @param posicion
+	 * Recibe un parámetro posicion y si es diferente a - 1, ejecuta el borrado.
+	 */
+	public void DeletePeliculaCartelera(int posicion) {
+		
 		if (posicion != -1) {
 			cartelera.remove(posicion);
 			System.out.println("La película ha sido borrada de la cartelera");

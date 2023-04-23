@@ -21,10 +21,20 @@ public class ListaUsuarios {
 	}
 
 	// ----------------------- CREAR UN USUARIO
+	/**
+	 * 
+	 * @param u
+	 * Recibe como parámetro un objeto de la clase Usuario
+	 * Añade ese objeto al ArrayList misSocios.
+	 */
 
 	public void AddUsuario(Usuario u) {
 		misSocios.add(u);
 	}
+	/**
+	 * No recibe parámetros
+	 * @return un objeto de la clase Usuario.
+	 */
 	public Usuario PedirUsuario() {
 		String dni = Utilidades.PedirCadena("Escriba el dni del nuevo usuario: ");
 		String nombre = Utilidades.PedirCadena("Escriba el nombre del nuevo usuario: ");
@@ -33,6 +43,11 @@ public class ListaUsuarios {
 	}
 
 //------------------------------ METODO DE BÚSQUEDA USUARIO
+	/**
+	 * 
+	 * @param cadena
+	 * @return un int, una posición o bien del ArrayList MisSocios o bien -1 si no lo ha encontrado.
+	 */
 	public int BusquedaUsuario(String cadena) {
 		int posicion = -1;
 		int i = 0;
@@ -51,10 +66,15 @@ public class ListaUsuarios {
 		return posicion;
 	}
 
-	// ------------------ MOSTRAR BUSQUEDA
+	// ------------------ MOSTRAR BUSQUEDA DE USUARIO
+	/**
+	 * 
+	 * @param posicion
+	 * Recibe un parámetro de posición del usuario e imprime por pantalla, si está, esa posición del arrayList MisSocios.
+	 */
 	
 	public void MostrarBusquedaUsuario(int posicion) {
-		if(posicion != -1) {
+		if(posicion != -1 && posicion< misSocios.size()) {
 		System.out.println(misSocios.get(posicion).toString());
 		}
 		else {
@@ -63,6 +83,11 @@ public class ListaUsuarios {
 	}
 	
 	//-------------------OBTENER USUARIO
+	/**
+	 * 
+	 * @param cadena
+	 * @return retorna la cadena y un mensaje tanto si el usuario se encuentra como si no.
+	 */
 	public String ObtenerUsuario(String cadena) {
 		int posicion = BusquedaUsuario(cadena);
 		if (posicion != -1) {
@@ -74,8 +99,12 @@ public class ListaUsuarios {
 	}
 
 	// ----------------------- AÑADIR PELI A USUARIO DE LA CARTELERA
-	// ------------------
-
+	/**
+	 * 
+	 * @param cadena
+	 * @param p
+	 * Este método recibe una cadena, que va a buscar en usuarios, y una pelicula que añadirá a ese usuario.
+	 */
 	public void AddPeliUsuario(String cadena, Pelicula p) {
 		int posicion = BusquedaUsuario(cadena);
 		if (posicion != -1) {
@@ -86,23 +115,36 @@ public class ListaUsuarios {
 
 	}
 
-	// --------------------UPDATE DATOS USUARIO
-	public void UpdateUsuario(int posicion) {
+	// --------------------UPDATE DATOS USUARIO  
+	/**
+	 * 
+	 * @param posicion
+	 * @return la posicion
+	 * Recibe un parámetro que indica la posicion que debe modificar. Si el parámetro es - 1 no se ejecuta la modificación.
+	 * Devuelve la posicion que se ha modificado en forma de int.
+	 */
+	public int UpdateUsuario(int posicion) {
+		int posicion1 = posicion;
 		if (posicion != -1) {
 			String NEWdni = Utilidades.PedirCadena(Utilidades.mensaje7);
 			String NEWnombreUser = Utilidades.PedirCadena(Utilidades.mensaje8);
 			misSocios.get(posicion).setDni(NEWdni);
 			misSocios.get(posicion).setNombreUsuario(NEWnombreUser);
 			System.out.println(misSocios.get(posicion));
-		} else {
-			System.out.println("El socio no está en la base de datos");
-		}
+		} 
+		return posicion1;
 	}
 
-	// -------------------------DELETE USUARIO
-	public void DeleteUsuario(String cadena) {
-		int posicion = BusquedaUsuario(cadena);
+	// -------------------------DELETE USUARIO 
+	/**
+	 * 
+	 * @param posicion
+	 * Recibe un int como parámetro que indica la posición que se debe borrar, si es - 1 no ejecuta el borrado. Imprime un mensaje con el resultado.
+	 */
+	public void DeleteUsuario(int posicion) {
+		
 		if (posicion != -1) {
+			System.out.println("Usuario borrado");
 			misSocios.remove(posicion);
 		} else {
 			System.out.println("El socio no está en la base de datos");
@@ -111,6 +153,14 @@ public class ListaUsuarios {
 
 
 	// ------------------------ BUSCAR PELICULA EN USUARIO
+	/**
+	 * 
+	 * @param cadena
+	 * @param nombreUsuario
+	 * Recibe dos parámetros, una cadena que utilizará para buscar en el ArrayList de ListaPeliculas y otra cadena que utilizará para buscar
+	 * en el ArrayList ListaUsuarios.
+	 * Muestra los resultados de esa búsqueda por pantalla.
+	 */
 	public void BusquedaPeliUser(String cadena, String nombreUsuario) {
 		int posicion = -1;
 		int posicionU = BusquedaUsuario(nombreUsuario);
@@ -128,6 +178,14 @@ public class ListaUsuarios {
 	}
 
 	// -----------------------------DELETE PELI EN USUARIO
+	/**
+	 * 
+	 * @param cadena
+	 * @param nombreUsuario
+	 * Recibe dos parámetros, una cadena que utilizará para buscar en el ArrayList de ListaPeliculas y otra cadena que utilizará para buscar
+	 * en el ArrayList ListaUsuarios.
+	 * Ejecuta o no el borrado y muestra los resultados de esa búsqueda por pantalla.
+	 */
 
 	public void BorrarPeliUser(String cadena, String nombreUsuario) {
 		int posicion = -1;

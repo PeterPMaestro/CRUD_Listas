@@ -18,6 +18,8 @@ public class Utilidades {
 	static String mensaje6 = "introduzca la fecha de estreno de la película de la manera que se indica (2001-01-02): ";
 	static String mensaje7 = "introduzca el nuevo dni del usuario: ";
 	static String mensaje8 = "introduzca el nuevo nombre del usuario: ";
+	static String mensaje9 = "introduzca el nuevo nombre de la película: ";
+	static String mensaje10 = "introduzca el nuevo género de la película: ";
 	static String menu1 = "\n 1. Usuarios" + "\n 2. Cartelera" + "\n 3. Salir" + "\n Elija una opción ";
 	static String menu2 = "\n 1. Añadir Usuario" + "\n 2. Buscar Usuario"  + "\n 3. Mostrar Usuarios" 
 			+  "\n 4. Update Usuario"  + "\n 5. Insertar película en la cuenta del Usuario"
@@ -29,7 +31,6 @@ public class Utilidades {
 		System.out.print(mensaje);
 		String cadena;
 		cadena = sc.nextLine();
-		//sc.nextLine();
 		return cadena;
 	}
 
